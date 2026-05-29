@@ -1,0 +1,5 @@
+=== cURL Command ===
+curl -s -b cookies.txt -X DELETE http://localhost:5000/customer/auth/review/1
+
+=== Output ===
+{"message":"Review for the book with ISBN 1 posted by eric has been deleted.","reviews":{}}

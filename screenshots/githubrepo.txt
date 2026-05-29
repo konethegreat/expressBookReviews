@@ -1,0 +1,14 @@
+=== cURL Command ===
+curl -s https://api.github.com/repos/<your-username>/expressBookReviews | grep -E "(parent|source|full_name)"
+
+=== Output (sample after forking from ibm-developer-skills-network/expressBookReviews) ===
+"full_name": "<your-username>/expressBookReviews",
+"fork": true,
+"parent": {
+    "full_name": "ibm-developer-skills-network/expressBookReviews",
+    ...
+},
+"source": {
+    "full_name": "ibm-developer-skills-network/expressBookReviews",
+    ...
+}

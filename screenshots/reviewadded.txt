@@ -1,0 +1,5 @@
+=== cURL Command ===
+curl -s -b cookies.txt -X PUT "http://localhost:5000/customer/auth/review/1?review=Excellent%20book"
+
+=== Output ===
+{"message":"Review for the book with ISBN 1 has been added/modified.","reviews":{"eric":"Excellent book about culture and colonialism"}}

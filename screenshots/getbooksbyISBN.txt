@@ -1,0 +1,5 @@
+=== cURL Command ===
+curl -s http://localhost:5000/isbn/1
+
+=== Output ===
+{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
