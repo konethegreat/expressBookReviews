@@ -1,5 +1,5 @@
 === cURL Command ===
-curl -s http://localhost:5000/author/Jane%20Austen
+curl -s "http://localhost:5000/author/Chinua%20Achebe"
 
 === Output ===
-{"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}}}
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}

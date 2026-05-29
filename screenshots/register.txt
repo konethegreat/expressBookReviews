@@ -1,5 +1,7 @@
 === cURL Command ===
-curl -s -X POST -H "Content-Type: application/json" -d "{\"username\":\"eric\",\"password\":\"pass123\"}" http://localhost:5000/register
+curl -s -X POST -H "Content-Type: application/json" \
+  -d '{"username":"testuser","password":"pass123"}' \
+  http://localhost:5000/register
 
 === Output ===
 {"message":"User successfully registered. Now you can login"}

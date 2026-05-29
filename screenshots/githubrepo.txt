@@ -1,14 +1,27 @@
 === cURL Command ===
-curl -s https://api.github.com/repos/<your-username>/expressBookReviews | grep -E "(parent|source|full_name)"
+curl -s https://api.github.com/repos/konethegreat/expressBookReviews | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+p = d.get('parent', {})
+s = d.get('source', {})
+print(json.dumps({
+  'full_name': d['full_name'],
+  'fork': d['fork'],
+  'parent': {'full_name': p.get('full_name'), 'html_url': p.get('html_url')},
+  'source': {'full_name': s.get('full_name'), 'html_url': s.get('html_url')}
+}, indent=2))
+"
 
-=== Output (sample after forking from ibm-developer-skills-network/expressBookReviews) ===
-"full_name": "<your-username>/expressBookReviews",
-"fork": true,
-"parent": {
+=== Output ===
+{
+  "full_name": "konethegreat/expressBookReviews",
+  "fork": true,
+  "parent": {
     "full_name": "ibm-developer-skills-network/expressBookReviews",
-    ...
-},
-"source": {
+    "html_url": "https://github.com/ibm-developer-skills-network/expressBookReviews"
+  },
+  "source": {
     "full_name": "ibm-developer-skills-network/expressBookReviews",
-    ...
+    "html_url": "https://github.com/ibm-developer-skills-network/expressBookReviews"
+  }
 }
