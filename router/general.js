@@ -2,6 +2,10 @@ const express = require('express');
 const axios = require('axios');
 const books = require('./booksdb.js');
 const { isValid, users } = require('./auth_users.js');
+const { PORT } = require('../config.js');
+
+// The async routes below call this same server over HTTP.
+const BASE_URL = `http://localhost:${PORT}`;
 
 const public_users = express.Router();
 
@@ -89,7 +93,7 @@ public_users.get('/review/:isbn', function (req, res) {
 // Task 10a: Get all books - using async/await with Axios
 const getAllBooks = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/');
+        const response = await axios.get(`${BASE_URL}/`);
         return response.data;
     } catch (error) {
         throw new Error("Error retrieving books: " + error.message);
@@ -108,7 +112,7 @@ public_users.get('/async/books', async (req, res) => {
 // Task 10b: Search by ISBN - using Promises with Axios
 const getBookByISBN = (isbn) => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:5000/isbn/${isbn}`)
+        axios.get(`${BASE_URL}/isbn/${isbn}`)
             .then((response) => resolve(response.data))
             .catch((error) => reject(error));
     });
@@ -123,7 +127,7 @@ public_users.get('/async/isbn/:isbn', (req, res) => {
 // Task 10c: Search by Author - using Promises with Axios
 const getBookByAuthor = (author) => {
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:5000/author/${encodeURIComponent(author)}`)
+        axios.get(`${BASE_URL}/author/${encodeURIComponent(author)}`)
             .then((response) => resolve(response.data))
             .catch((error) => reject(error));
     });
@@ -138,7 +142,7 @@ public_users.get('/async/author/:author', (req, res) => {
 // Task 10d: Search by Title - using async/await with Axios
 const getBookByTitle = async (title) => {
     try {
-        const response = await axios.get(`http://localhost:5000/title/${encodeURIComponent(title)}`);
+        const response = await axios.get(`${BASE_URL}/title/${encodeURIComponent(title)}`);
         return response.data;
     } catch (error) {
         throw new Error("Error retrieving by title: " + error.message);
